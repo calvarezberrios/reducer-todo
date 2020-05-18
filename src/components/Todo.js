@@ -16,7 +16,8 @@ const Todo = ({ task, dispatch }) => {
                 onChange = {e => e.target.checked = !task.completed}
                 onClick = {completeTask} 
             />
-            <label htmlFor = {task.id}>{task.item}</label>
+            <label htmlFor = {task.id} className = {task.completed ? " completed" : ""}>{task.item}</label>
+            <br />
         </>
     );
 };
