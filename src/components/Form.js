@@ -23,7 +23,7 @@ const Form = ({ tasks, dispatch }) => {
         }
     }
 
-    const clearSubmitted = e => {
+    const clearCompleted = e => {
         e.preventDefault();
 
         dispatch({type: "delete", payload: true})
@@ -33,7 +33,7 @@ const Form = ({ tasks, dispatch }) => {
         <form onSubmit = {handleSubmit}>
             <input id = "newTodoInput" type = "text" name = "task" placeholder = "Add New Todo..." value = {newItem.task} onChange = {handleChange} />
             <button>Add Todo</button>
-            <button onClick = {clearSubmitted}>Clear Completed</button>            
+            <button onClick = {clearCompleted}>Clear Completed</button>            
         </form>
     );
 };
