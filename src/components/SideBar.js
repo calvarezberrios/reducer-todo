@@ -20,13 +20,32 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import AssignmentTurnedInIcon from "@material-ui/icons/AssignmentTurnedIn";
+import { indigo } from '@material-ui/core/colors';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
 
 import useLocalStorage from "../hooks/useLocalStorage";
 import { reducer } from "../reducers/reducer";
 import TodoList from "./TodoList";
 import useForm from "../hooks/useForm";
+import useDarkMode from "../hooks/useDarkMode";
 
 const drawerWidth = 250;
+
+const CustomSwitch = withStyles({
+    switchBase: {
+        color: indigo[500],
+        '&$checked': {
+            color: indigo[500],
+        },
+        '&$checked + $track': {
+            backgroundColor: indigo[500],
+        },
+    },
+    checked: {},
+    track: {},
+})(Switch);
 
 const StyledBadge = withStyles(theme => ({
     badge: {
@@ -106,6 +125,13 @@ function SideBar(props) {
     );
     const [filteredTasks, setFilteredTasks] = React.useState(state.tasks);
     const [input, handleChange] = useForm({ search: "" });
+    const [darkMode, setDarkMode] = useDarkMode(false);
+
+    useEffect(() => {
+        if(darkMode) {
+            document.body.classList.add("darkMode");
+        }
+    }, [darkMode]);
 
     useEffect(() => {
         setSavedState(state);
@@ -185,6 +211,13 @@ function SideBar(props) {
 
     const drawer = (
         <div>
+            <FormGroup style = {{ width: "100%", textAlign: "center"}}>
+                <FormControlLabel
+                    style = {{ margin: "0 5px"}}
+                    control={<CustomSwitch checked={darkMode} onChange={setDarkMode} name="darkMode" />}
+                    label="Dark Mode"
+                />
+            </FormGroup>
             <List>
                 <div className={classes.margin}>
                     <Grid container spacing={0} alignItems="flex-end">
@@ -193,7 +226,7 @@ function SideBar(props) {
                         </Grid>
                         <Grid item>
                             <TextField
-                                id="search"
+                                
                                 label="Search Tasks..."
                                 name="search"
                                 value={input.search}

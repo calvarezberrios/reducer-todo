@@ -1,3 +1,5 @@
+
+
 .App {
   font-family: sans-serif;
   text-align: center;
@@ -6,4 +8,42 @@
 .MuiButton-label {
   justify-content: flex-start !important;
 }
+
+
+/* Start Of Dark Mode Styles */
+.darkMode {
+  background: #888 !important;
+}
+
+.darkMode .App {
+  background: #888;
+}
+
+.darkMode header div{
+  background: #555;
+}
+
+.darkMode nav .MuiPaper-root, .darkMode .MuiDrawer-modal .makeStyles-drawerPaper-11 {
+  background: #555 !important;
+  color: white;
+}
+
+.darkMode .MuiInputBase-input, #editTask, .darkMode .MuiFormLabel-root {
+  color: white !important;
+}
+
+.darkMode .MuiButton-root, .darkMode .MuiBadge-badge {
+  background: #333 !important;
+}
+
+.darkMode .MuiLink-root, .darkMode .MuiIconButton-label, .darkMode .MuiFormControlLabel-root {
+  color: white !important;
+}
+
+.darkMode .Mui-checked + .MuiSwitch-track{
+  background: #333 !important;
+}
+
+/* End Of Dark Mode Styles */
+
 
