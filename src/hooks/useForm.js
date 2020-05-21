@@ -1,11 +1,16 @@
 import { useState } from "react";
 
 export default function useForm(initialValue) {
-    const [value, setValue] = useState(initialValue);
+    const [values, setValues] = useState(initialValue);
 
-    const handleChange = e => {
-        setValue({...value, [e.target.name]: e.target.type !== "text" ? !e.target.checked : e.target.value});
+    const handleChanges = e => {
+        setValues({
+            ...values,
+            [e.target.name]:
+                e.target.type === "checkbox" || e.target.type === "radio" ?
+                    e.target.checked : e.target.value
+        });
     }
 
-    return [value, handleChange];
+    return [values, handleChanges];
 }

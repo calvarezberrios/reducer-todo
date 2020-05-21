@@ -1,20 +1,15 @@
-import React, { useReducer } from 'react';
-import './App.css';
+import React from "react";
+import "./styles.css";
 
-import { initialState, reducer } from "./reducers/reducer";
-import TodoList from "./components/TodoList";
-import Form from "./components/Form";
+import SideBar from "./components/SideBar";
 
-
-function App() {
-  const [tasks, dispatch] = useReducer(reducer, initialState);
+export default function App() {
+  
 
   return (
     <div className="App">
-      <Form tasks = {tasks} dispatch = {dispatch} />
-      <TodoList tasks = {tasks}  dispatch = {dispatch} />
+      <SideBar />
+      
     </div>
   );
 }
-
-export default App;
